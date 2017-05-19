@@ -44,7 +44,7 @@ IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
 	dialog.dismiss();  //dismiss the dialog
 	dialog.getDialog(); // get the real dialog object
 ```
-[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java)
+[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
 
 ### Other
