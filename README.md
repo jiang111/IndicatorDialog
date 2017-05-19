@@ -5,7 +5,7 @@ a dialog with arrow indicator in different position <br />
 
 
 ### Demo:
-![](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/result1.gif)
+<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/a.png" width="226" height="234" alt=""/>
 
 
 ### Depend:
@@ -44,7 +44,7 @@ IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
 	dialog.dismiss();  //dismiss the dialog
 	dialog.getDialog(); // get the real dialog object
 ```
-[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java)
+[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
 
 ### Other
