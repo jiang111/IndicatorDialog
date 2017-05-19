@@ -5,7 +5,7 @@ a dialog with arrow indicator in different position <br />
 
 
 ### Demo:
-![](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/result1.gif)
+<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/a.png" width="226" height="234" alt=""/>
 
 
 ### Depend:
