@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public int getItemCount() {
-                        return 50;
+                        return 20;
                     }
                 }).create();
         dialog.setCanceledOnTouchOutside(true)
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public int getItemCount() {
-                        return 100;
+                        return 2;
                     }
                 }).create();
         dialog.setCanceledOnTouchOutside(true)

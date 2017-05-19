@@ -15,6 +15,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * Created by jiang on 2017/5/18.
@@ -22,8 +23,6 @@ import android.widget.LinearLayout;
 
 public class IndicatorDialog {
 
-
-    public static final int TOP_WIDTH = 5;
     private Activity mContext;
     private Dialog mDialog;
     private IndicatorBuilder mBuilder;
@@ -52,7 +51,7 @@ public class IndicatorDialog {
                 mBuilder.height <= 0 ? ViewGroup.LayoutParams.WRAP_CONTENT : mBuilder.height);
         rootLayout.setLayoutParams(rootParam);
         if (mBuilder.arrowdirection == IndicatorBuilder.TOP)
-            addArrow2LinearLayout(true);
+            addArrow2LinearLayout();
         addRecyclerView2RecyclerView();
 
 
@@ -64,6 +63,19 @@ public class IndicatorDialog {
     private void addRecyclerView2RecyclerView() {
         childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.dialog_layout, rootLayout, true);
         recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
+
+
+        if (mBuilder.arrowdirection == IndicatorBuilder.TOP) {
+            childLayout.findViewById(R.id.j_dialog_bottom_arrow).setVisibility(View.GONE);
+        } else {
+            View arrowBottom = childLayout.findViewById(R.id.j_dialog_bottom_arrow);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrowBottom.getLayoutParams();
+            layoutParams.width = (int) (mBuilder.width * 0.075);
+            layoutParams.height = (int) (mBuilder.width * 0.075);
+            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
+            arrowBottom.setLayoutParams(layoutParams);
+        }
+
 
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -79,9 +91,9 @@ public class IndicatorDialog {
 
     private void resizeHeight(int recyclerviewHeight) {
 
-        int arrowHeght = Utils.dip2px(mContext, (int) (mBuilder.width * 0.075));
-        int topAndBottomHeight = Utils.dip2px(mContext, 15);
-        int calcuteResult = recyclerviewHeight - topAndBottomHeight + arrowHeght;
+        int arrowHeght = (int) (mBuilder.width * 0.075);
+        int topAndBottomHeight = Utils.dip2px(mContext, 10);
+        int calcuteResult = recyclerviewHeight + topAndBottomHeight + arrowHeght;
 
         int result;
         if (mBuilder.height <= 0 || calcuteResult < mBuilder.height) {
@@ -93,14 +105,22 @@ public class IndicatorDialog {
         ViewGroup.LayoutParams params = rootLayout.getLayoutParams();
         params.height = result;
         rootLayout.setLayoutParams(params);
+
+        if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
+            RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            params1.bottomMargin = (int) (mBuilder.width * 0.075) + Utils.dip2px(mContext, 5);
+            recyclerView.setLayoutParams(params1);
+
+        }
+
         rootLayout.requestLayout();
         setSize2Dialog(result);
 
     }
 
-    private void addArrow2LinearLayout(boolean up) {
+    private void addArrow2LinearLayout() {
         View arrow = new View(mContext);
-        arrow.setBackgroundResource(up ? R.drawable.arrow_shape : R.drawable.arrow_shape_down);
+        arrow.setBackgroundResource(R.drawable.arrow_shape);
         rootLayout.addView(arrow);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrow.getLayoutParams();
         layoutParams.width = (int) (mBuilder.width * 0.075);
