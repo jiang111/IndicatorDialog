@@ -68,15 +68,10 @@ public class IndicatorDialog {
         recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
 
 
-        if (mBuilder.arrowdirection == IndicatorBuilder.TOP) {
+        if (mBuilder.arrowdirection != IndicatorBuilder.BOTTOM) {
             childLayout.findViewById(R.id.j_dialog_bottom_arrow).setVisibility(View.GONE);
         } else {
-            View arrowBottom = childLayout.findViewById(R.id.j_dialog_bottom_arrow);
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrowBottom.getLayoutParams();
-            layoutParams.width = arrowWidth;
-            layoutParams.height = arrowWidth;
-            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
-            arrowBottom.setLayoutParams(layoutParams);
+            addBottomArrow2LinearLayout();
         }
 
 
@@ -90,6 +85,18 @@ public class IndicatorDialog {
             }
         });
 
+    }
+
+    private void addBottomArrow2LinearLayout() {
+        View arrowBottom = childLayout.findViewById(R.id.j_dialog_bottom_arrow);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrowBottom.getLayoutParams();
+        layoutParams.width = arrowWidth;
+        layoutParams.height = arrowWidth;
+        layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
+        arrowBottom.setLayoutParams(layoutParams);
+        TriangleDrawable drawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
+        drawable.setBounds(arrowBottom.getLeft(), arrowBottom.getTop(), arrowBottom.getRight(), arrowBottom.getBottom());
+        arrowBottom.setBackgroundDrawable(drawable);
     }
 
     private void resizeHeight(int recyclerviewHeight) {
@@ -123,12 +130,15 @@ public class IndicatorDialog {
 
     private void addArrow2LinearLayout() {
         View arrow = new View(mContext);
-        arrow.setBackgroundResource(R.drawable.arrow_shape);
         rootLayout.addView(arrow);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrow.getLayoutParams();
         layoutParams.width = (int) (mBuilder.width * 0.075);
         layoutParams.height = (int) (mBuilder.width * 0.075);
         layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
+        arrow.setLayoutParams(layoutParams);
+        TriangleDrawable drawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
+        drawable.setBounds(arrow.getLeft(), arrow.getTop(), arrow.getRight(), arrow.getBottom());
+        arrow.setBackgroundDrawable(drawable);
     }
 
     private void setSize2Dialog(int height) {

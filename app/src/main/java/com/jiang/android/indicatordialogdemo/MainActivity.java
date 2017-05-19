@@ -1,6 +1,7 @@
 package com.jiang.android.indicatordialogdemo;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 .width(500)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.BOTTOM)
+                .bgColor(Color.BLACK)
                 .gravity(IndicatorBuilder.GRAVITY_LEFT)
                 .ArrowRectage(0.1f)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))

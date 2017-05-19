@@ -1,6 +1,7 @@
 package com.jiang.android.indicatordialog;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.annotation.IntDef;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,21 +15,20 @@ import java.lang.annotation.RetentionPolicy;
 public class IndicatorBuilder {
     public static final int TOP = 12;
     public static final int BOTTOM = 13;
+    public static final int LEFT = 14;
+    public static final int RIGHT = 15;
 
     public static final int GRAVITY_LEFT = 688;
     public static final int GRAVITY_RIGHT = 689;
     protected int width;
     protected int height;
+    protected int bgColor = Color.WHITE;
     protected float arrowercentage; //箭头位置
-    protected
-    @ARROWDIRECTION
-    int arrowdirection = TOP;
+    protected int arrowdirection = TOP;
     private Activity mContext;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected RecyclerView.Adapter mAdapter;
-    protected
-    @GRAVITY
-    int gravity = GRAVITY_LEFT;
+    protected int gravity = GRAVITY_LEFT;
 
     public IndicatorBuilder(Activity context) {
         this.mContext = context;
@@ -42,6 +42,12 @@ public class IndicatorBuilder {
     public IndicatorBuilder height(int height) {
         this.height = height;
         return this;
+    }
+
+    public IndicatorBuilder bgColor(int color) {
+        this.bgColor = color;
+        return this;
+
     }
 
     public IndicatorBuilder ArrowRectage(float rectage) {
@@ -76,7 +82,7 @@ public class IndicatorBuilder {
         return IndicatorDialog.newInstance(mContext, this);
     }
 
-    @IntDef({TOP, BOTTOM})
+    @IntDef({TOP, BOTTOM, LEFT, RIGHT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ARROWDIRECTION {
     }
