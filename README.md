@@ -31,7 +31,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-    compile 'com.github.jiang111:IndicatorDialog:v1.2.2'
+    compile 'com.github.jiang111:IndicatorDialog:v1.2.3'
 }
 ```
 
