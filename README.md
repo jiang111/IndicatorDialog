@@ -35,11 +35,12 @@ IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
                 .ArrowDirection(IndicatorBuilder.BOTTOM)  // the  position of dialog's arrow indicator  (TOP or BOTTOM)
                 .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog
                 .gravity(GRAVITY_LEFT)   // dialog' sgravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER)
+		.radius(8) // the radius in dialog
                 .ArrowRectage(0.2f)  // the arrow's offset Relative to the dialog's width
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)) 
                 .adapter(adapter).create();
         dialog.setCanceledOnTouchOutside(true); // outside cancelable
-        dialog.show(v);
+        dialog.show(v); // or use dialog.show(x,y); to determine the location of dialog
 	dialog.dismiss();  //dismiss the dialog
 	dialog.getDialog(); // get the real dialog object
 ```
