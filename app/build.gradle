@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.jiang.android.indicatordialogdemo"
         minSdkVersion 15
@@ -19,6 +19,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile project(':indicator')
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+
 }
