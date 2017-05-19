@@ -3,17 +3,13 @@ package com.jiang.android.indicatordialog;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import static android.R.attr.width;
 import static com.jiang.android.indicatordialog.IndicatorBuilder.BOTTOM;
 import static com.jiang.android.indicatordialog.IndicatorBuilder.TOP;
 
