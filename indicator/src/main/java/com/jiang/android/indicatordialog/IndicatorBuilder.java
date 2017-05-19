@@ -20,6 +20,7 @@ public class IndicatorBuilder {
 
     public static final int GRAVITY_LEFT = 688;
     public static final int GRAVITY_RIGHT = 689;
+    public static final int GRAVITY_CENTER = 670;
     protected int width;
     protected int height;
     protected int radius = 8;
@@ -94,7 +95,7 @@ public class IndicatorBuilder {
     public @interface ARROWDIRECTION {
     }
 
-    @IntDef({GRAVITY_LEFT, GRAVITY_RIGHT})
+    @IntDef({GRAVITY_LEFT, GRAVITY_RIGHT,GRAVITY_CENTER})
     @Retention(RetentionPolicy.SOURCE)
     public @interface GRAVITY {
 
