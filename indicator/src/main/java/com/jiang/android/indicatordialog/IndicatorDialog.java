@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 
 public class IndicatorDialog {
 
-    public static final float ARROW_RECTAGE = 0.075f;
+    public static float ARROW_RECTAGE = 0.1f;
     private Activity mContext;
     private Dialog mDialog;
     private IndicatorBuilder mBuilder;
@@ -141,7 +141,10 @@ public class IndicatorDialog {
             RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
             params1.bottomMargin = arrowWidth + Utils.dip2px(mContext, 5);
             recyclerView.setLayoutParams(params1);
-
+        } else {
+            RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            params1.bottomMargin = Utils.dip2px(mContext, 5);
+            recyclerView.setLayoutParams(params1);
         }
         modifybgColor();
         rootLayout.requestLayout();
@@ -153,8 +156,8 @@ public class IndicatorDialog {
         View arrow = new View(mContext);
         rootLayout.addView(arrow);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrow.getLayoutParams();
-        layoutParams.width = (int) (mBuilder.width * 0.075);
-        layoutParams.height = (int) (mBuilder.width * 0.075);
+        layoutParams.width = arrowWidth;
+        layoutParams.height = arrowWidth;
         layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
         arrow.setLayoutParams(layoutParams);
         TriangleDrawable drawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
