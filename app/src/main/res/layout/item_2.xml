@@ -14,12 +14,14 @@
         android:paddingRight="15dp"
         android:paddingTop="8dp"
         android:text="哈哈"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="14sp" />
 
     <View
+        android:id="@+id/item_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/item_line"
-        android:background="#cacaca" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#5b5a5d" />
 </LinearLayout>
