@@ -242,5 +242,15 @@ public class IndicatorDialog {
         dialogWindow.setAttributes(lp);
     }
 
+    public void dismiss() {
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
+    }
+
+    public Dialog getDialog() {
+        return mDialog;
+    }
+
 
 }
