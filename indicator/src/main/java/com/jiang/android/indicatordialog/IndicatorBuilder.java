@@ -3,6 +3,7 @@ package com.jiang.android.indicatordialog;
 import android.app.Activity;
 import android.graphics.Color;
 import android.support.annotation.IntDef;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.lang.annotation.Retention;
@@ -36,6 +37,12 @@ public class IndicatorBuilder {
         this.mContext = context;
     }
 
+    /**
+     * dialog width in px
+     *
+     * @param width px
+     * @return
+     */
     public IndicatorBuilder width(int width) {
         this.width = width;
         return this;
@@ -52,6 +59,12 @@ public class IndicatorBuilder {
 
     }
 
+    /**
+     * the radius in each corner
+     *
+     * @param radius
+     * @return
+     */
     public IndicatorBuilder radius(int radius) {
         this.radius = radius;
         return this;
@@ -87,6 +100,20 @@ public class IndicatorBuilder {
     }
 
     public IndicatorDialog create() {
+
+        if (width <= 0)
+            throw new NullPointerException("width can not be 0");
+
+        if (arrowercentage <= 0)
+            throw new NullPointerException("arrowercentage can not be 0");
+
+
+        if (mAdapter == null)
+            throw new NullPointerException("adapter can not be null");
+
+        if (mLayoutManager == null) {
+            mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        }
         return IndicatorDialog.newInstance(mContext, this);
     }
 
@@ -95,7 +122,7 @@ public class IndicatorBuilder {
     public @interface ARROWDIRECTION {
     }
 
-    @IntDef({GRAVITY_LEFT, GRAVITY_RIGHT,GRAVITY_CENTER})
+    @IntDef({GRAVITY_LEFT, GRAVITY_RIGHT, GRAVITY_CENTER})
     @Retention(RetentionPolicy.SOURCE)
     public @interface GRAVITY {
 
