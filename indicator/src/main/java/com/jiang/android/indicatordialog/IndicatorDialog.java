@@ -51,7 +51,7 @@ public class IndicatorDialog {
     }
 
     private void initDialog() {
-        mDialog = new Dialog(mContext);
+        mDialog = new Dialog(mContext, android.R.style.Theme_Material_Dialog_NoActionBar);
         rootLayout = new LinearLayout(mContext);
         rootLayout.setOrientation(LinearLayout.VERTICAL);
         ViewGroup.LayoutParams rootParam = new ViewGroup.LayoutParams(mBuilder.width,
@@ -215,7 +215,7 @@ public class IndicatorDialog {
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
             y = height - location[1];
         } else {
-            y = location[1] + view.getHeight() / 2;
+            y = location[1];
         }
         show(x, y);
 
