@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 
 public class IndicatorDialog {
 
+    public static final float ARROW_RECTAGE = 0.075f;
     private Activity mContext;
     private Dialog mDialog;
     private IndicatorBuilder mBuilder;
@@ -30,6 +31,7 @@ public class IndicatorDialog {
     private LinearLayout rootLayout;
     int gravity = Gravity.TOP | Gravity.LEFT;
     private LinearLayout childLayout;
+    private int arrowWidth;
 
     public static IndicatorDialog newInstance(Activity context, IndicatorBuilder builder) {
         IndicatorDialog dialog = new IndicatorDialog(context, builder);
@@ -40,6 +42,7 @@ public class IndicatorDialog {
     public IndicatorDialog(Activity context, IndicatorBuilder builder) {
         this.mContext = context;
         this.mBuilder = builder;
+        this.arrowWidth = (int) (mBuilder.width * ARROW_RECTAGE);
         initDialog();
     }
 
@@ -70,8 +73,8 @@ public class IndicatorDialog {
         } else {
             View arrowBottom = childLayout.findViewById(R.id.j_dialog_bottom_arrow);
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrowBottom.getLayoutParams();
-            layoutParams.width = (int) (mBuilder.width * 0.075);
-            layoutParams.height = (int) (mBuilder.width * 0.075);
+            layoutParams.width = arrowWidth;
+            layoutParams.height = arrowWidth;
             layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage);
             arrowBottom.setLayoutParams(layoutParams);
         }
@@ -91,7 +94,7 @@ public class IndicatorDialog {
 
     private void resizeHeight(int recyclerviewHeight) {
 
-        int arrowHeght = (int) (mBuilder.width * 0.075);
+        int arrowHeght = arrowWidth;
         int topAndBottomHeight = Utils.dip2px(mContext, 10);
         int calcuteResult = recyclerviewHeight + topAndBottomHeight + arrowHeght;
 
@@ -108,7 +111,7 @@ public class IndicatorDialog {
 
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
             RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-            params1.bottomMargin = (int) (mBuilder.width * 0.075) + Utils.dip2px(mContext, 5);
+            params1.bottomMargin = arrowWidth + Utils.dip2px(mContext, 5);
             recyclerView.setLayoutParams(params1);
 
         }

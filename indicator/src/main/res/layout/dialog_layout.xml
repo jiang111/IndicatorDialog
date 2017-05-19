@@ -20,12 +20,24 @@
         android:layout_marginBottom="5dp"
         android:background="@color/_ffffff" />
 
-
-    <View
-        android:id="@+id/j_dialog_bottom"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/round_bottom_bg" />
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/j_dialog_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/round_bottom_bg" />
+
+        <View
+            android:id="@+id/j_dialog_bottom_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arrow_shape_down" />
+    </LinearLayout>
 
 </RelativeLayout>
