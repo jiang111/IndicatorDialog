@@ -39,13 +39,13 @@ dependencies {
 ```
 // create  IndicatorBuilder to init parameters
 IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
-                .width(400)   // the dialog width in px
-                .height((int) (height * 0.5))  // the dialog max height in px or -1 (means auto fit)
-                .ArrowDirection(IndicatorBuilder.BOTTOM)  // the  position of dialog's arrow indicator  (TOP or BOTTOM)
-                .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog
-                .gravity(GRAVITY_LEFT)   // dialog' sgravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER)
-		.radius(8) // the radius in dialog
-                .ArrowRectage(0.2f)  // the arrow's offset Relative to the dialog's width
+                .width(400)   // the dialog width in px  (dialog的宽度单位 px)
+                .height((int) (height * 0.5))  // the dialog max height in px or -1 (means auto fit) (dialog 的最大高度,-1则自适应)
+                .ArrowDirection(IndicatorBuilder.BOTTOM)  // the  position of dialog's arrow indicator (TOP or BOTTOM) (dialog 的箭头方向)
+                .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog (dialog的背景颜色)
+                .gravity(GRAVITY_LEFT)   // dialog' sgravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER) (这个 dialog 的相对位置)
+		.radius(8) // the radius in dialog (四周圆角度数)
+                .ArrowRectage(0.2f)  // the arrow's offset Relative to the dialog's width (相对于宽度的距离百分比)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)) 
                 .adapter(adapter).create();
         dialog.setCanceledOnTouchOutside(true); // outside cancelable
