@@ -1,5 +1,5 @@
 # IndicatorDialog
-init
+a dialog with arrow indicator in different position
 
 Step 1. Add the JitPack repository to your build file
 
