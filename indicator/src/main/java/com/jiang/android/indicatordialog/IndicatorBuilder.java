@@ -22,6 +22,7 @@ public class IndicatorBuilder {
     public static final int GRAVITY_RIGHT = 689;
     protected int width;
     protected int height;
+    protected int radius = 8;
     protected int bgColor = Color.WHITE;
     protected float arrowercentage; //箭头位置
     protected int arrowdirection = TOP;
@@ -46,6 +47,12 @@ public class IndicatorBuilder {
 
     public IndicatorBuilder bgColor(int color) {
         this.bgColor = color;
+        return this;
+
+    }
+
+    public IndicatorBuilder radius(int radius) {
+        this.radius = radius;
         return this;
 
     }

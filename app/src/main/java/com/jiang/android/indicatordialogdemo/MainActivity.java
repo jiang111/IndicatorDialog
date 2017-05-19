@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 .width(500)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.BOTTOM)
-                .bgColor(Color.BLACK)
+                .bgColor(Color.BLUE)
                 .gravity(IndicatorBuilder.GRAVITY_LEFT)
                 .ArrowRectage(0.1f)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))
@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         int height = dm.heightPixels;
         IndicatorDialog dialog = new IndicatorBuilder(this)
                 .width(500)
+                .bgColor(Color.WHITE)
+                .radius(10)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.TOP)
                 .gravity(view.getId() == R.id.add1 ? IndicatorBuilder.GRAVITY_LEFT : IndicatorBuilder.GRAVITY_RIGHT)

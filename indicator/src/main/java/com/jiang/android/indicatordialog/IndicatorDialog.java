@@ -3,6 +3,7 @@ package com.jiang.android.indicatordialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -63,10 +64,14 @@ public class IndicatorDialog {
 
     }
 
+    /**
+     * modify recyclerview state
+     */
     private void addRecyclerView2RecyclerView() {
         childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.dialog_layout, rootLayout, true);
-        recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
 
+        recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
+        recyclerView.setBackgroundColor(mBuilder.bgColor);
 
         if (mBuilder.arrowdirection != IndicatorBuilder.BOTTOM) {
             childLayout.findViewById(R.id.j_dialog_bottom_arrow).setVisibility(View.GONE);
@@ -85,6 +90,22 @@ public class IndicatorDialog {
             }
         });
 
+    }
+
+    /**
+     * modify top & bottom bg color
+     */
+    private void modifybgColor() {
+        View view = childLayout.findViewById(R.id.j_dialog_top);
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
+        RoundedDrawable roundedDrawable = new RoundedDrawable(bitmap, mBuilder.bgColor);
+        roundedDrawable.setCornerRadius(mBuilder.radius, mBuilder.radius, 0, 0);
+        view.setBackgroundDrawable(roundedDrawable);
+        View viewBottom = childLayout.findViewById(R.id.j_dialog_bottom);
+        Bitmap bitmapBottom = Bitmap.createBitmap(viewBottom.getWidth(), viewBottom.getHeight(), Bitmap.Config.RGB_565);
+        RoundedDrawable roundedDrawableBottom = new RoundedDrawable(bitmapBottom, mBuilder.bgColor);
+        roundedDrawableBottom.setCornerRadius(0, 0, mBuilder.radius, mBuilder.radius);
+        viewBottom.setBackgroundDrawable(roundedDrawableBottom);
     }
 
     private void addBottomArrow2LinearLayout() {
@@ -122,7 +143,7 @@ public class IndicatorDialog {
             recyclerView.setLayoutParams(params1);
 
         }
-
+        modifybgColor();
         rootLayout.requestLayout();
         setSize2Dialog(result);
 

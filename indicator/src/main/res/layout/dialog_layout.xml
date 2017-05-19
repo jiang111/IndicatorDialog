@@ -8,8 +8,7 @@
         android:id="@+id/j_dialog_top"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/round_top_bg" />
+        android:layout_alignParentTop="true" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -17,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/j_dialog_top"
-        android:layout_marginBottom="5dp"
-        android:background="@color/_ffffff" />
+        android:layout_marginBottom="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +28,7 @@
             android:id="@+id/j_dialog_bottom"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/round_bottom_bg" />
+            android:layout_alignParentBottom="true" />
 
         <View
             android:id="@+id/j_dialog_bottom_arrow"
