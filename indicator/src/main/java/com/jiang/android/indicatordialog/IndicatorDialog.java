@@ -196,6 +196,11 @@ public class IndicatorDialog {
 
 
     public void show(View view) {
+        show(view, 0, 0);
+
+    }
+
+    public void show(View view, int xOffset, int yOffset) {
         int[] location = new int[2];
         view.getLocationInWindow(location);
         Resources resources = mContext.getResources();
@@ -211,12 +216,15 @@ public class IndicatorDialog {
         } else {
             x = 0;
         }
-
+        x += xOffset;
+        if (x < 0) x = 0;
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
             y = height - location[1];
         } else {
             y = location[1];
         }
+        y += yOffset;
+        if (y < 0) y = 0;
         show(x, y);
 
     }
