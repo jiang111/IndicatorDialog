@@ -31,8 +31,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-    compile 'com.github.jiang111:IndicatorDialog:v1.2.3'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.github.jiang111:IndicatorDialog:v1.2.4'
 }
 ```
 
