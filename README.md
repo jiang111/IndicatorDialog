@@ -50,6 +50,7 @@ IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
                 .adapter(adapter).create();
         dialog.setCanceledOnTouchOutside(true); // outside cancelable
         dialog.show(v); // or use dialog.show(x,y); to determine the location of dialog
+      // dialog.show(v,x,y); // x,y offset of the dialog 
 	dialog.dismiss();  //dismiss the dialog
 	dialog.getDialog(); // get the real dialog object
 ```
