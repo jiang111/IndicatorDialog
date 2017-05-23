@@ -175,6 +175,9 @@ public class IndicatorDialog {
     private void setSize2Dialog(int height) {
         Window dialogWindow = mDialog.getWindow();
         dialogWindow.setBackgroundDrawableResource(android.R.color.transparent);
+        if (mBuilder.animator != 0) {
+            dialogWindow.setWindowAnimations(mBuilder.animator);
+        }
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
             gravity = Gravity.RIGHT | (mBuilder.arrowdirection == TOP ? Gravity.TOP : Gravity.BOTTOM);

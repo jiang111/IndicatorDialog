@@ -164,11 +164,68 @@ public class MainActivity extends AppCompatActivity {
         mICons.add(R.drawable.ic_camera_black_24dp);
         mLists.add("面对面红包");
         mICons.add(R.drawable.ic_attach_money_black_24dp);
+        mLists.add("创建群聊");
+        mICons.add(R.drawable.ic_chat_bubble_outline_black_24dp);
+        mLists.add("加好友");
+        mICons.add(R.drawable.ic_child_friendly_black_24dp);
+        mLists.add("扫一扫");
+        mICons.add(R.drawable.ic_settings_bluetooth_black_24dp);
+        mLists.add("面对面快传");
+        mICons.add(R.drawable.ic_autorenew_black_24dp);
+        mLists.add("付款");
+        mICons.add(R.drawable.ic_monetization_on_black_24dp);
+        mLists.add("拍摄");
+        mICons.add(R.drawable.ic_camera_black_24dp);
+        mLists.add("面对面红包");
+        mICons.add(R.drawable.ic_attach_money_black_24dp);
+        mLists.add("创建群聊");
+        mICons.add(R.drawable.ic_chat_bubble_outline_black_24dp);
+        mLists.add("加好友");
+        mICons.add(R.drawable.ic_child_friendly_black_24dp);
+        mLists.add("扫一扫");
+        mICons.add(R.drawable.ic_settings_bluetooth_black_24dp);
+        mLists.add("面对面快传");
+        mICons.add(R.drawable.ic_autorenew_black_24dp);
+        mLists.add("付款");
+        mICons.add(R.drawable.ic_monetization_on_black_24dp);
+        mLists.add("拍摄");
+        mICons.add(R.drawable.ic_camera_black_24dp);
+        mLists.add("面对面红包");
+        mICons.add(R.drawable.ic_attach_money_black_24dp);
+        mLists.add("创建群聊");
+        mICons.add(R.drawable.ic_chat_bubble_outline_black_24dp);
+        mLists.add("加好友");
+        mICons.add(R.drawable.ic_child_friendly_black_24dp);
+        mLists.add("扫一扫");
+        mICons.add(R.drawable.ic_settings_bluetooth_black_24dp);
+        mLists.add("面对面快传");
+        mICons.add(R.drawable.ic_autorenew_black_24dp);
+        mLists.add("付款");
+        mICons.add(R.drawable.ic_monetization_on_black_24dp);
+        mLists.add("拍摄");
+        mICons.add(R.drawable.ic_camera_black_24dp);
+        mLists.add("面对面红包");
+        mICons.add(R.drawable.ic_attach_money_black_24dp);
+        mLists.add("创建群聊");
+        mICons.add(R.drawable.ic_chat_bubble_outline_black_24dp);
+        mLists.add("加好友");
+        mICons.add(R.drawable.ic_child_friendly_black_24dp);
+        mLists.add("扫一扫");
+        mICons.add(R.drawable.ic_settings_bluetooth_black_24dp);
+        mLists.add("面对面快传");
+        mICons.add(R.drawable.ic_autorenew_black_24dp);
+        mLists.add("付款");
+        mICons.add(R.drawable.ic_monetization_on_black_24dp);
+        mLists.add("拍摄");
+        mICons.add(R.drawable.ic_camera_black_24dp);
+        mLists.add("面对面红包");
+        mICons.add(R.drawable.ic_attach_money_black_24dp);
         Resources resources = getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int height = dm.heightPixels;
         IndicatorDialog dialog = new IndicatorBuilder(this)
                 .width(400)
+                .animator(R.style.dialog_exit)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.TOP)
                 .bgColor(Color.WHITE)

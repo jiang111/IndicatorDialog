@@ -3,6 +3,7 @@ package com.jiang.android.indicatordialog;
 import android.app.Activity;
 import android.graphics.Color;
 import android.support.annotation.IntDef;
+import android.support.annotation.StyleRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -32,6 +33,7 @@ public class IndicatorBuilder {
     protected RecyclerView.LayoutManager mLayoutManager;
     protected RecyclerView.Adapter mAdapter;
     protected int gravity = GRAVITY_LEFT;
+    protected int animator;
 
     public IndicatorBuilder(Activity context) {
         this.mContext = context;
@@ -69,6 +71,11 @@ public class IndicatorBuilder {
         this.radius = radius;
         return this;
 
+    }
+
+    public IndicatorBuilder animator(@StyleRes int animator) {
+        this.animator = animator;
+        return this;
     }
 
     public IndicatorBuilder ArrowRectage(float rectage) {
