@@ -36,6 +36,9 @@ public class IndicatorDialog {
     private LinearLayout childLayout;
     private int arrowWidth;
     private View arrowTop;
+    private View topRadiusView;
+    private View bottomRadiusView;
+    private int mRadiusHeight;
 
     public static IndicatorDialog newInstance(Activity context, IndicatorBuilder builder) {
         IndicatorDialog dialog = new IndicatorDialog(context, builder);
@@ -47,6 +50,7 @@ public class IndicatorDialog {
         this.mContext = context;
         this.mBuilder = builder;
         this.arrowWidth = (int) (mBuilder.width * ARROW_RECTAGE);
+        this.mRadiusHeight = (int) (mBuilder.radius * 1.5);
         initDialog();
     }
 
@@ -99,16 +103,35 @@ public class IndicatorDialog {
      * modify top & bottom bg color
      */
     private void modifybgColor() {
-        View view = childLayout.findViewById(R.id.j_dialog_top);
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
-        RoundedDrawable roundedDrawable = new RoundedDrawable(bitmap, mBuilder.bgColor);
-        roundedDrawable.setCornerRadius(mBuilder.radius, mBuilder.radius, 0, 0);
-        view.setBackgroundDrawable(roundedDrawable);
-        View viewBottom = childLayout.findViewById(R.id.j_dialog_bottom);
-        Bitmap bitmapBottom = Bitmap.createBitmap(viewBottom.getWidth(), viewBottom.getHeight(), Bitmap.Config.RGB_565);
-        RoundedDrawable roundedDrawableBottom = new RoundedDrawable(bitmapBottom, mBuilder.bgColor);
-        roundedDrawableBottom.setCornerRadius(0, 0, mBuilder.radius, mBuilder.radius);
-        viewBottom.setBackgroundDrawable(roundedDrawableBottom);
+        topRadiusView = childLayout.findViewById(R.id.j_dialog_top);
+        bottomRadiusView = childLayout.findViewById(R.id.j_dialog_bottom);
+
+        if (mRadiusHeight <= 0) {
+            topRadiusView.setVisibility(View.GONE);
+            bottomRadiusView.setVisibility(View.GONE);
+
+        } else {
+            topRadiusView.setVisibility(View.VISIBLE);
+            bottomRadiusView.setVisibility(View.VISIBLE);
+
+            RelativeLayout.LayoutParams topRadiusLayoutParam = (RelativeLayout.LayoutParams) topRadiusView.getLayoutParams();
+            topRadiusLayoutParam.height = mRadiusHeight;
+            topRadiusLayoutParam.width = mBuilder.width;
+            topRadiusView.setLayoutParams(topRadiusLayoutParam);
+            Bitmap bitmap = Bitmap.createBitmap(mBuilder.width, mRadiusHeight, Bitmap.Config.RGB_565);
+            RoundedDrawable roundedDrawable = new RoundedDrawable(bitmap, mBuilder.bgColor);
+            roundedDrawable.setCornerRadius(mBuilder.radius, mBuilder.radius, 0, 0);
+            topRadiusView.setBackgroundDrawable(roundedDrawable);
+            LinearLayout.LayoutParams bottomRadiusLayoutParam = (LinearLayout.LayoutParams) bottomRadiusView.getLayoutParams();
+            bottomRadiusLayoutParam.height = mRadiusHeight;
+            bottomRadiusLayoutParam.width = mBuilder.width;
+
+            bottomRadiusView.setLayoutParams(bottomRadiusLayoutParam);
+            Bitmap bitmapBottom = Bitmap.createBitmap(mBuilder.width, mRadiusHeight, Bitmap.Config.RGB_565);
+            RoundedDrawable roundedDrawableBottom = new RoundedDrawable(bitmapBottom, mBuilder.bgColor);
+            roundedDrawableBottom.setCornerRadius(0, 0, mBuilder.radius, mBuilder.radius);
+            bottomRadiusView.setBackgroundDrawable(roundedDrawableBottom);
+        }
     }
 
     private void addBottomArrow2LinearLayout() {
@@ -125,8 +148,9 @@ public class IndicatorDialog {
 
     private void resizeHeight(int recyclerviewHeight) {
 
+        modifybgColor();
         int arrowHeght = arrowWidth;
-        int topAndBottomHeight = Utils.dip2px(mContext, 10);
+        int topAndBottomHeight = mRadiusHeight * 2;
         int calcuteResult = recyclerviewHeight + topAndBottomHeight + arrowHeght;
 
         int result;
@@ -139,6 +163,7 @@ public class IndicatorDialog {
         ViewGroup.LayoutParams params = rootLayout.getLayoutParams();
         params.height = result;
         rootLayout.setLayoutParams(params);
+
         if (mBuilder.arrowdirection == TOP) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) arrowTop.getLayoutParams();
             layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage) - arrowWidth / 2;
@@ -149,15 +174,13 @@ public class IndicatorDialog {
         }
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
             RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-            params1.bottomMargin = arrowWidth + Utils.dip2px(mContext, 5);
+            params1.bottomMargin = arrowWidth + mRadiusHeight;
             recyclerView.setLayoutParams(params1);
         } else {
             RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-            params1.bottomMargin = Utils.dip2px(mContext, 5);
+            params1.bottomMargin = mRadiusHeight;
             recyclerView.setLayoutParams(params1);
         }
-
-        modifybgColor();
         rootLayout.requestLayout();
         setSize2Dialog(result);
 

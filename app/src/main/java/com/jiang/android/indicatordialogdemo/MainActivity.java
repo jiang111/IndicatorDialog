@@ -104,11 +104,12 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics dm = resources.getDisplayMetrics();
         int height = dm.heightPixels;
         IndicatorDialog dialog = new IndicatorBuilder(this)
-                .width(400)
+                .width(500)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.BOTTOM)
                 .bgColor(Color.parseColor("#49484b"))
                 .gravity(gravityCenter)
+                .radius(8)
                 .ArrowRectage(v1)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))
                 .adapter(new BaseAdapter() {
@@ -231,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 .bgColor(Color.WHITE)
                 .gravity(gravityCenter)
                 .ArrowRectage(v1)
+                .radius(8)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))
                 .adapter(new BaseAdapter() {
                     @Override
