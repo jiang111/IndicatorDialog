@@ -124,7 +124,7 @@ public class IndicatorBuilder {
         return IndicatorDialog.newInstance(mContext, this);
     }
 
-    @IntDef({TOP, BOTTOM, LEFT, RIGHT})
+    @IntDef({TOP, BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ARROWDIRECTION {
     }
