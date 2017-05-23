@@ -41,6 +41,7 @@ dependencies {
 IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
                 .width(400)   // the dialog width in px  (dialog的宽度单位 px)
                 .height((int) (height * 0.5))  // the dialog max height in px or -1 (means auto fit) (dialog 的最大高度,-1则自适应)
+                 .animator(R.style.dialog_exit) //add animator 
                 .ArrowDirection(IndicatorBuilder.BOTTOM)  // the  position of dialog's arrow indicator (TOP or BOTTOM) (dialog 的箭头方向)
                 .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog (dialog的背景颜色)
                 .gravity(GRAVITY_LEFT)   // dialog' sgravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER) (这个 dialog 的相对位置)
