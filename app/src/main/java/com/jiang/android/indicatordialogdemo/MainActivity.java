@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mBottom3;
     private ImageView mBottom2;
     private ImageView mBottom1;
+    private ImageView mBottom4;
+    private ImageView mBottom5;
 
 
     @Override
@@ -81,6 +83,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        mBottom4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomDialog(v, 0.3f, IndicatorBuilder.GRAVITY_LEFT);
+            }
+        });
+        mBottom5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomDialog(v, 0.7f, IndicatorBuilder.GRAVITY_RIGHT);
+            }
+        });
+
     }
 
     private void showBottomDialog(View v, float v1, int gravityCenter) {
@@ -277,12 +292,16 @@ public class MainActivity extends AppCompatActivity {
         mBottom1 = $(R.id.activity_add_bottom_1);
         mBottom2 = $(R.id.activity_add_bottom_2);
         mBottom3 = $(R.id.activity_add_bottom_3);
+        mBottom5 = $(R.id.activity_add_bottom_5);
+        mBottom4 = $(R.id.activity_add_bottom_4);
         mAdd.setClickable(true);
+        mBottom4.setClickable(true);
         mAddLeft.setClickable(true);
         mAddCenter.setClickable(true);
         mBottom1.setClickable(true);
         mBottom2.setClickable(true);
         mBottom3.setClickable(true);
+        mBottom5.setClickable(true);
     }
 
 

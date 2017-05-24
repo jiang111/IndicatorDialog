@@ -222,7 +222,19 @@ public class IndicatorDialog {
 
 
     public void show(View view) {
-        show(view, 0, 0);
+
+        int x = 0;
+        if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
+            x = -1 * (int) (mBuilder.width * mBuilder.arrowercentage) + view.getWidth() / 2;
+        } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
+            x = -1 * (mBuilder.width - (int) (mBuilder.width * mBuilder.arrowercentage)) + view.getWidth() / 2;
+        }
+//        else {
+//            x =-1 * (int) (mBuilder.width * mBuilder.arrowercentage) - view.getWidth() / 2;
+//        }
+
+
+        show(view, x, 0);
 
     }
 
