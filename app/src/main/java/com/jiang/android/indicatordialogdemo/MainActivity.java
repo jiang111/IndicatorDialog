@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jiang.android.indicatordialog.IndicatorBuilder;
 import com.jiang.android.indicatordialog.IndicatorDialog;
@@ -119,12 +120,12 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics dm = resources.getDisplayMetrics();
         int height = dm.heightPixels;
         IndicatorDialog dialog = new IndicatorBuilder(this)
-                .width(500)
+                .width(400)
                 .height((int) (height * 0.5))
                 .ArrowDirection(IndicatorBuilder.BOTTOM)
                 .bgColor(Color.parseColor("#49484b"))
                 .gravity(gravityCenter)
-                .radius(8)
+                .radius(18)
                 .ArrowRectage(v1)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))
                 .adapter(new BaseAdapter() {
@@ -149,7 +150,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public boolean clickable() {
-                        return false;
+                        return true;
+                    }
+
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Toast.makeText(MainActivity.this, "你点击了:" + position, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -247,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 .bgColor(Color.WHITE)
                 .gravity(gravityCenter)
                 .ArrowRectage(v1)
-                .radius(8)
+                .radius(18)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))
                 .adapter(new BaseAdapter() {
                     @Override
@@ -271,7 +277,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public boolean clickable() {
-                        return false;
+                        return true;
+                    }
+
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Toast.makeText(MainActivity.this, "你点击了:" + position, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
