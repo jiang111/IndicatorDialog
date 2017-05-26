@@ -136,7 +136,7 @@ public class IndicatorDialog {
             Window dialogWindow = mDialog.getWindow();
             dialogWindow.setBackgroundDrawableResource(android.R.color.transparent);
             WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-            lp.y = lp.y + -1 * (int) (mResultHeight * mBuilder.arrowercentage) + arrowWidth;
+            lp.y = lp.y - ((int) (mResultHeight * mBuilder.arrowercentage));
             dialogWindow.setAttributes(lp);
 
         } else {
@@ -235,7 +235,7 @@ public class IndicatorDialog {
         } else if (mBuilder.arrowdirection == TOP) {
             y = location[1] + view.getHeight() - arrowWidth / 2;
         } else if (mBuilder.arrowdirection == LEFT) {
-            y = location[1];
+            y = location[1] + view.getHeight() / 2;
         } else {
             y = location[1];
         }

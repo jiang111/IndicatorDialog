@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 11
-        versionName "1.2.7"
+        versionCode 15
+        versionName "1.3"
 
 
     }

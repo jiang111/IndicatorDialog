@@ -7,11 +7,11 @@ a dialog with arrow indicator in different position <br />
 ### Demo:
 
 <p>
-<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/l1.png" width="120" height="230" alt=""  />
+<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/left_1.png" width="120" height="230" alt=""  />
 <img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/l2.png"  width="120" height="230" alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/l3.png" width="120" height="230" alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/d1.png"  width="120" height="230" alt="" />
-<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/d2.png"  width="120" height="230" alt="" />
+<img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/left_2.png"  width="120" height="230" alt="" />
 <img src="https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/d3.png"  width="120" height="230" alt="" />
 </p>
 
