@@ -90,11 +90,6 @@ public class IndicatorDialog {
         childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.dialog_layout, rootLayout, true);
         mCardView = (CardView) childLayout.findViewById(R.id.j_dialog_card);
 
-        ViewGroup.LayoutParams layoutParams = childLayout.getLayoutParams();
-        layoutParams.width = mBuilder.width;
-        childLayout.setLayoutParams(layoutParams);
-
-
         mCardView.setRadius(mBuilder.radius);
         recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
 
@@ -167,11 +162,11 @@ public class IndicatorDialog {
         }
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
-            gravity = Gravity.RIGHT | (mBuilder.arrowdirection == TOP ? Gravity.TOP : Gravity.BOTTOM);
+            gravity = Gravity.RIGHT | (mBuilder.arrowdirection != BOTTOM ? Gravity.TOP : Gravity.BOTTOM);
         } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
-            gravity = Gravity.LEFT | (mBuilder.arrowdirection == TOP ? Gravity.TOP : Gravity.BOTTOM);
+            gravity = Gravity.LEFT | (mBuilder.arrowdirection != BOTTOM ? Gravity.TOP : Gravity.BOTTOM);
         } else {
-            gravity = Gravity.CENTER_HORIZONTAL | (mBuilder.arrowdirection == TOP ? Gravity.TOP : Gravity.BOTTOM);
+            gravity = Gravity.CENTER_HORIZONTAL | (mBuilder.arrowdirection != BOTTOM ? Gravity.TOP : Gravity.BOTTOM);
         }
         dialogWindow.setGravity(gravity);
         lp.width = mBuilder.width; // 宽度
@@ -188,17 +183,26 @@ public class IndicatorDialog {
     public void show(View view) {
 
         int x = 0;
-        if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
-            x = -1 * (int) (mBuilder.width * mBuilder.arrowercentage) + view.getWidth() / 2;
-        } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
-            x = -1 * (mBuilder.width - (int) (mBuilder.width * mBuilder.arrowercentage)) + view.getWidth() / 2;
+        int y = 0;
+        if (mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM) {
+            if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
+                x = -1 * (int) (mBuilder.width * mBuilder.arrowercentage) + view.getWidth() / 2;
+            } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
+                x = -1 * (mBuilder.width - (int) (mBuilder.width * mBuilder.arrowercentage)) + view.getWidth() / 2;
+            }
+        } else {
+            if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
+                x = view.getWidth();
+                // y = -1 * (int) (rootLayout.getHeight() * mBuilder.arrowercentage) + view.getWidth() / 2;
+            } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
+                x = view.getWidth();
+                //  y = -1 * (rootLayout.getHeight() - (int) (mBuilder.width * mBuilder.arrowercentage)) + view.getWidth() / 2;
+            }
+
         }
-//        else {
-//            x =-1 * (int) (mBuilder.width * mBuilder.arrowercentage) - view.getWidth() / 2;
-//        }
 
 
-        show(view, x, 0);
+        show(view, x, y);
 
     }
 
@@ -222,6 +226,10 @@ public class IndicatorDialog {
         if (x < 0) x = 0;
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
             y = height - location[1];
+        } else if (mBuilder.arrowdirection == TOP) {
+            y = location[1];
+        } else if (mBuilder.arrowdirection == LEFT) {
+            y = location[1];
         } else {
             y = location[1];
         }

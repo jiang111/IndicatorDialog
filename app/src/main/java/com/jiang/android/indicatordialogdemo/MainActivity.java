@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mLeftTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLeftDialog(v, 0.3f, IndicatorBuilder.GRAVITY_LEFT);
+                showLeftDialog(v, 0.2f, IndicatorBuilder.GRAVITY_LEFT);
             }
         });
         mLeftCenter.setOnClickListener(new View.OnClickListener() {
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
         IndicatorDialog dialog = new IndicatorBuilder(this)
                 .width(400)
                 .animator(R.style.dialog_exit)
-                .height((int) (height * 0.5))
+                .height((int) (height * 0.2))
                 .ArrowDirection(IndicatorBuilder.LEFT)
                 .bgColor(Color.WHITE)
                 .gravity(gravityLeft)

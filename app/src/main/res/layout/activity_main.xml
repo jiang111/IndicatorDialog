@@ -12,7 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="70dp"
         android:background="@drawable/ic_add_black_24dp_black" />
 
@@ -22,7 +22,7 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="50dp"
         android:background="@drawable/ic_add_black_24dp_black" />
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="200dp"
         android:background="@drawable/ic_add_black_24dp_black" />
 
