@@ -10,7 +10,9 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
 import static com.jiang.android.indicatordialog.IndicatorBuilder.BOTTOM;
+import static com.jiang.android.indicatordialog.IndicatorBuilder.LEFT;
 import static com.jiang.android.indicatordialog.IndicatorBuilder.TOP;
 
 /**
@@ -53,6 +55,16 @@ public class TriangleDrawable extends Drawable {
             path.lineTo(bound.right, 0);
             path.close();
 
+        } else if (arrowDirection == LEFT) {
+            path.moveTo(bound.right / 2, bound.bottom / 2);
+            path.lineTo(bound.right, bound.top);
+            path.lineTo(bound.right, bound.bottom);
+            path.close();
+        } else {
+            path.moveTo(bound.right / 2, bound.bottom / 2);
+            path.lineTo(bound.left, bound.top);
+            path.lineTo(bound.left, bound.bottom);
+            path.close();
         }
         return path;
 
