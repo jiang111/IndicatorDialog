@@ -219,6 +219,12 @@ public class IndicatorDialog {
         DisplayMetrics dm = resources.getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;
+
+        SystemBarConfig systemBarConfig = new SystemBarConfig(mContext);
+        if (systemBarConfig.hasNavigtionBar() && systemBarConfig.isNavigationAtBottom()) {
+            height += systemBarConfig.getNavigationBarHeight();
+
+        }
         int x;
         int y;
         if ((gravity & Gravity.RIGHT) == Gravity.RIGHT) {
