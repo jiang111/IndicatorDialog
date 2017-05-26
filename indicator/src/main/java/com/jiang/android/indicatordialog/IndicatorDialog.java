@@ -89,9 +89,12 @@ public class IndicatorDialog {
     private void addRecyclerView2RecyclerView() {
         childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.dialog_layout, rootLayout, true);
         mCardView = (CardView) childLayout.findViewById(R.id.j_dialog_card);
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mCardView.getLayoutParams();
+
+        ViewGroup.LayoutParams layoutParams = childLayout.getLayoutParams();
         layoutParams.width = mBuilder.width;
-        mCardView.setLayoutParams(layoutParams);
+        childLayout.setLayoutParams(layoutParams);
+
+
         mCardView.setRadius(mBuilder.radius);
         recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
 
@@ -136,6 +139,7 @@ public class IndicatorDialog {
             layoutParams.topMargin = (int) (result * mBuilder.arrowercentage) - arrowWidth / 2;
         } else {
             layoutParams.topMargin = (int) (result * mBuilder.arrowercentage) - arrowWidth / 2;
+
         }
         mArrow.setLayoutParams(layoutParams);
         TriangleDrawable drawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
