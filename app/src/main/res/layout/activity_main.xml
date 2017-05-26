@@ -7,6 +7,62 @@
     android:orientation="vertical"
     tools:context="com.jiang.android.indicatordialogdemo.MainActivity">
 
+    <ImageView
+        android:id="@+id/activity_add_left_center_top"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+    <ImageView
+        android:id="@+id/activity_add_left_center"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+    <ImageView
+        android:id="@+id/activity_add_left_center_bottom"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+
+    <ImageView
+        android:id="@+id/activity_add_right_center_top"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+    <ImageView
+        android:id="@+id/activity_add_activity_add_right_center"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+    <ImageView
+        android:id="@+id/activity_add_activity_add_right_center_bottom"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/ic_add_black_24dp_black" />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
