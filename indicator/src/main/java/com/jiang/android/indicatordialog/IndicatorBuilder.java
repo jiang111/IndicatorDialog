@@ -121,10 +121,13 @@ public class IndicatorBuilder {
         if (mLayoutManager == null) {
             mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         }
+
+//        if (arrowdirection == RIGHT)
+//            width += radius * 2;
         return IndicatorDialog.newInstance(mContext, this);
     }
 
-    @IntDef({TOP, BOTTOM, LEFT})
+    @IntDef({TOP, BOTTOM, LEFT, RIGHT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface ARROWDIRECTION {
     }
