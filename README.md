@@ -1,5 +1,5 @@
 # IndicatorDialog
-a dialog with arrow indicator in different position <br />
+a dialog with arrow indicator in location where you want
 
 [![](https://jitpack.io/v/jiang111/IndicatorDialog.svg)](https://jitpack.io/#jiang111/IndicatorDialog)
 
