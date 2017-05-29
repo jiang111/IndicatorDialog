@@ -54,6 +54,7 @@ IndicatorDialog dialog = new IndicatorBuilder(this) //must be activity
       // dialog.show(v,x,y); // x,y offset of the dialog 
 	dialog.dismiss();  //dismiss the dialog
 	dialog.getDialog(); // get the real dialog object
+	//you can custom arrow style by custom class extend BaseDrawable and use the arrowDrawable(baseDrawable) method to config 
 ```
 [see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 

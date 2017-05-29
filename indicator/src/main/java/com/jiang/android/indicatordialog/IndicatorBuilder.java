@@ -34,6 +34,7 @@ public class IndicatorBuilder {
     protected RecyclerView.Adapter mAdapter;
     protected int gravity = GRAVITY_LEFT;
     protected int animator;
+    protected BaseDrawable mArrowDrawable;
 
     public IndicatorBuilder(Activity context) {
         this.mContext = context;
@@ -75,6 +76,11 @@ public class IndicatorBuilder {
 
     public IndicatorBuilder animator(@StyleRes int animator) {
         this.animator = animator;
+        return this;
+    }
+
+    public IndicatorBuilder arrowDrawable(BaseDrawable drawable) {
+        this.mArrowDrawable = drawable;
         return this;
     }
 
@@ -122,8 +128,6 @@ public class IndicatorBuilder {
             mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         }
 
-//        if (arrowdirection == RIGHT)
-//            width += radius * 2;
         return IndicatorDialog.newInstance(mContext, this);
     }
 

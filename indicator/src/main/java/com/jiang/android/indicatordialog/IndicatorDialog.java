@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,15 +147,16 @@ public class IndicatorDialog {
             dialogWindow.setAttributes(lp);
         }
         mArrow.setLayoutParams(layoutParams);
-        TriangleDrawable drawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
-        drawable.setBounds(mArrow.getLeft(), mArrow.getTop(), mArrow.getRight(), mArrow.getBottom());
-        mArrow.setBackgroundDrawable(drawable);
+        BaseDrawable arrowDrawable;
+        if (mBuilder.mArrowDrawable == null) {
+            arrowDrawable = new TriangleDrawable(mBuilder.arrowdirection, mBuilder.bgColor);
+        } else {
+            arrowDrawable = mBuilder.mArrowDrawable;
+        }
+        arrowDrawable.setBounds(mArrow.getLeft(), mArrow.getTop(), mArrow.getRight(), mArrow.getBottom());
+        mArrow.setBackgroundDrawable(arrowDrawable);
         rootLayout.requestLayout();
         setSize2Dialog(mResultHeight);
-        Log.i(TAG, "resizeHeight: mWidth:" + mWidth
-                + " \nrootHeight:" + rootLayout.getHeight()
-                + " \nrecylerviewWidth:" + recyclerView.getHeight()
-                + " \narrowWidth:" + mArrow.getHeight());
 
     }
 

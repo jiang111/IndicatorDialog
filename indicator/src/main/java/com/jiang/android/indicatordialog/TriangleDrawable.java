@@ -19,12 +19,12 @@ import static com.jiang.android.indicatordialog.IndicatorBuilder.TOP;
  * Created by jiang on 2017/5/19.
  */
 
-public class TriangleDrawable extends Drawable {
-    private int arrowDirection;
+public class TriangleDrawable extends BaseDrawable {
+
     private int bgColor = Color.WHITE;
 
     public TriangleDrawable(@IndicatorBuilder.ARROWDIRECTION int arrowDirection, int bgColor) {
-        this.arrowDirection = arrowDirection;
+        super(arrowDirection);
         this.bgColor = bgColor;
     }
 
