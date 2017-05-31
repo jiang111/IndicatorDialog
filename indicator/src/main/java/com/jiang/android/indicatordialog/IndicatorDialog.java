@@ -97,7 +97,7 @@ public class IndicatorDialog {
         CardView.LayoutParams layoutParams = (CardView.LayoutParams) recyclerView.getLayoutParams();
         int width = mBuilder.width;
         if (mBuilder.arrowdirection == RIGHT) {
-            width -= mBuilder.radius * 2;
+            width -= arrowWidth;
         }
         layoutParams.width = width;
         recyclerView.setLayoutParams(layoutParams);
