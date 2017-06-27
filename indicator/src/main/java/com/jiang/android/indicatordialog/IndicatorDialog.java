@@ -123,16 +123,26 @@ public class IndicatorDialog {
 
         int arrowHeght = mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM ? arrowWidth : 0;
         int calcuteResult = recyclerviewHeight + arrowHeght;
-
+        int recyc_height = recyclerviewHeight;
         if (mBuilder.height <= 0 || calcuteResult < mBuilder.height) {
             mResultHeight = calcuteResult;
         } else {
             mResultHeight = mBuilder.height;
+            if (mBuilder.arrowdirection == BOTTOM) {
+                recyc_height = mResultHeight - arrowWidth;
+            }
         }
 
         ViewGroup.LayoutParams params = rootLayout.getLayoutParams();
         params.height = mResultHeight;
         rootLayout.setLayoutParams(params);
+
+
+        if (mBuilder.arrowdirection == BOTTOM) {
+            ViewGroup.LayoutParams recyc_layoutParam = recyclerView.getLayoutParams();
+            recyc_layoutParam.height = recyc_height;
+            recyclerView.setLayoutParams(recyc_layoutParam);
+        }
 
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mArrow.getLayoutParams();
         if (mBuilder.arrowdirection == TOP) {
