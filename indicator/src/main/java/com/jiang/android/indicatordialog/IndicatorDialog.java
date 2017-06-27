@@ -92,6 +92,7 @@ public class IndicatorDialog {
         childLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.dialog_layout, rootLayout, true);
         mCardView = (CardView) childLayout.findViewById(R.id.j_dialog_card);
 
+        mCardView.setCardBackgroundColor(mBuilder.bgColor);
         mCardView.setRadius(mBuilder.radius);
         recyclerView = (RecyclerView) childLayout.findViewById(R.id.j_dialog_rv);
         CardView.LayoutParams layoutParams = (CardView.LayoutParams) recyclerView.getLayoutParams();

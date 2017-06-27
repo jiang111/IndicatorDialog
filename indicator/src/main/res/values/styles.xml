@@ -3,8 +3,12 @@
 
     <style name="J_Dialog_Style">
         <item name="windowActionBar">false</item>
-        <item name="android:backgroundDimEnabled">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 </resources>
