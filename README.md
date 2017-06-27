@@ -1,5 +1,5 @@
 # IndicatorDialog
-a dialog with arrow indicator in location where you want
+a dialog with arrow indicator in the location where you want [minSdkVersion 15]
 
 [![](https://jitpack.io/v/jiang111/IndicatorDialog.svg)](https://jitpack.io/#jiang111/IndicatorDialog)
 
