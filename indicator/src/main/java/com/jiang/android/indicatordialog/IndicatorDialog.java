@@ -304,5 +304,15 @@ public class IndicatorDialog {
         return mDialog;
     }
 
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
 
+    public CardView getCardView() {
+        return mCardView;
+    }
+
+    public View getArrow() {
+        return mArrow;
+    }
 }
