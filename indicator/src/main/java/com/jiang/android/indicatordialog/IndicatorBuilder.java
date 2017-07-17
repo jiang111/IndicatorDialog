@@ -35,6 +35,7 @@ public class IndicatorBuilder {
     protected int gravity = GRAVITY_LEFT;
     protected int animator;
     protected BaseDrawable mArrowDrawable;
+    protected boolean dimEnabled = true;
 
     public IndicatorBuilder(Activity context) {
         this.mContext = context;
@@ -94,6 +95,12 @@ public class IndicatorBuilder {
 
     public IndicatorBuilder ArrowDirection(@ARROWDIRECTION int direction) {
         this.arrowdirection = direction;
+        return this;
+    }
+
+
+    public IndicatorBuilder dimEnabled(boolean enable) {
+        this.dimEnabled = enable;
         return this;
     }
 

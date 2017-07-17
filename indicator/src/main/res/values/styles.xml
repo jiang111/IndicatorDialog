@@ -7,8 +7,15 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
         <item name="android:windowIsTranslucent">false</item><!--半透明-->
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="J_DIalog_Style_Dim_enable" parent="J_Dialog_Style">
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+    <style name="J_DIalog_Style_Dim_disable" parent="J_Dialog_Style">
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
     </style>
 </resources>

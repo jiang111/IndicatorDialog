@@ -561,6 +561,7 @@ public class MainActivity extends AppCompatActivity {
                 .ArrowDirection(IndicatorBuilder.TOP)
                 .bgColor(Color.WHITE)
                 .gravity(gravityCenter)
+                .dimEnabled(true)
                 .ArrowRectage(v1)
                 .radius(18)
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))

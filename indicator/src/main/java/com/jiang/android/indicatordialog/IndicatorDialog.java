@@ -57,7 +57,11 @@ public class IndicatorDialog {
     }
 
     private void initDialog() {
-        mDialog = new Dialog(mContext, R.style.J_Dialog_Style);
+        if (mBuilder.dimEnabled) {
+            mDialog = new Dialog(mContext, R.style.J_DIalog_Style_Dim_enable);
+        } else {
+            mDialog = new Dialog(mContext, R.style.J_DIalog_Style_Dim_disable);
+        }
         rootLayout = new LinearLayout(mContext);
         if (mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM) {
             rootLayout.setOrientation(LinearLayout.VERTICAL);
