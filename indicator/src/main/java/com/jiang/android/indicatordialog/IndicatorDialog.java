@@ -2,12 +2,10 @@ package com.jiang.android.indicatordialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +39,7 @@ public class IndicatorDialog {
     private CardView mCardView;
     private int mWidth;
     private int mResultHeight;
+    private View mShowView;
 
     public static IndicatorDialog newInstance(Activity context, IndicatorBuilder builder) {
         IndicatorDialog dialog = new IndicatorDialog(context, builder);
@@ -138,6 +137,27 @@ public class IndicatorDialog {
         }
 
         ViewGroup.LayoutParams params = rootLayout.getLayoutParams();
+
+
+        //重新获取屏幕能接受的最大高度，如果当前高度超过屏幕能接受的恩最大高度，则设置为屏幕能接受的高度
+        int canUseHeight = 0;
+        if (mShowView != null) {
+            int[] location = new int[2];
+            mShowView.getLocationInWindow(location);
+
+            int contentHeight = Utils.getLocationInWindow(mContext)[1];
+            if (mBuilder.arrowdirection == TOP) {
+                canUseHeight = contentHeight - location[1] - mShowView.getHeight();
+            } else if (mBuilder.arrowdirection == BOTTOM) {
+                canUseHeight = location[1] - Utils.getStatusBarHeight(mContext);
+            } else {
+                canUseHeight = Utils.getLocationInContent(mContext)[1];
+            }
+        }
+
+        if (mResultHeight > canUseHeight) {
+            mResultHeight = canUseHeight;
+        }
         params.height = mResultHeight;
         rootLayout.setLayoutParams(params);
 
@@ -175,6 +195,7 @@ public class IndicatorDialog {
 
     }
 
+
     private void addArrow2LinearLayout() {
         mArrow = new View(mContext);
         rootLayout.addView(mArrow);
@@ -211,7 +232,7 @@ public class IndicatorDialog {
 
 
     public void show(View view) {
-
+        mShowView = view;
         int x = 0;
         int y = 0;
         if (mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM) {
@@ -234,19 +255,13 @@ public class IndicatorDialog {
 
     }
 
+
     public void show(View view, int xOffset, int yOffset) {
         int[] location = new int[2];
         view.getLocationInWindow(location);
-        Resources resources = mContext.getResources();
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
+        int height = Utils.getLocationInWindow(mContext)[1];
+        int width = Utils.getLocationInWindow(mContext)[0];
 
-        SystemBarConfig systemBarConfig = new SystemBarConfig(mContext);
-        if (systemBarConfig.hasNavigtionBar() && systemBarConfig.isNavigationAtBottom()) {
-            height += systemBarConfig.getNavigationBarHeight();
-
-        }
         int x;
         int y;
         if ((gravity & Gravity.RIGHT) == Gravity.RIGHT) {

@@ -99,6 +99,11 @@ public class IndicatorBuilder {
     }
 
 
+    /**
+     * 背景模糊效果，默认true
+     * @param enable 默认true
+     * @return
+     */
     public IndicatorBuilder dimEnabled(boolean enable) {
         this.dimEnabled = enable;
         return this;
