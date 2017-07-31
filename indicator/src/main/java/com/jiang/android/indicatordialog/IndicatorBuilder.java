@@ -27,6 +27,7 @@ public class IndicatorBuilder {
     protected int height;
     protected int radius = 8;
     protected int bgColor = Color.WHITE;
+    protected int mArrowWidth;
     protected float arrowercentage; //箭头位置
     protected int arrowdirection = TOP;
     private Activity mContext;
@@ -42,7 +43,7 @@ public class IndicatorBuilder {
     }
 
     /**
-     * dialog width in px
+     * 对话框宽度
      *
      * @param width px
      * @return
@@ -52,11 +53,23 @@ public class IndicatorBuilder {
         return this;
     }
 
+    /**
+     * 对话框高度， -1则自动适配，否则如果内容真实的高度大于指定的高度，则使用指定的高度，否则使用真实的高度
+     *
+     * @param height 高度，单位px
+     * @return
+     */
     public IndicatorBuilder height(int height) {
         this.height = height;
         return this;
     }
 
+    /**
+     * 对话框背景颜色
+     *
+     * @param color
+     * @return
+     */
     public IndicatorBuilder bgColor(int color) {
         this.bgColor = color;
         return this;
@@ -64,35 +77,77 @@ public class IndicatorBuilder {
     }
 
     /**
-     * the radius in each corner
+     * dialog的圆角度数 必须 >= 0
      *
-     * @param radius
+     * @param radius 四周圆角度数
      * @return
      */
     public IndicatorBuilder radius(int radius) {
+        if (radius < 0) {
+            new Exception("radius must >=0");
+        }
         this.radius = radius;
         return this;
 
     }
 
+    /**
+     * 为dialog添加进入退出动画
+     *
+     * @param animator
+     * @return
+     */
     public IndicatorBuilder animator(@StyleRes int animator) {
         this.animator = animator;
         return this;
     }
 
+    /**
+     * 三角箭头的宽高，因为他是正方形的。
+     * 如果不填则默认是用 {@IndicatorDialog.ARROW_RECTAGE} 这个属性，把Dialog的width属性取出来 mBuilder.width * ARROW_RECTAGE 来获取这个箭头的宽度
+     * 单位px
+     * 当然，你也可以修改{@IndicatorDialog.ARROW_RECTAGE} 这个属性，但是注意： 它是static的，所以会对全局起效。
+     *
+     * @param width 箭头的宽高
+     * @return
+     */
+    public IndicatorBuilder arrowWidth(int width) {
+        this.mArrowWidth = width;
+        return this;
+    }
+
+    /**
+     * 箭头的drawable，你可以通过继承BaseDrawable来实现自定义箭头的样式，默认会将箭头的高度/2往view方向偏移。
+     * 不填则是用默认的三角箭头
+     *
+     * @param drawable
+     * @return
+     */
     public IndicatorBuilder arrowDrawable(BaseDrawable drawable) {
         this.mArrowDrawable = drawable;
         return this;
     }
 
+    /**
+     * 箭头的位置，如果是上下方向，则 view的位置为 width*rectage,如果是左右方向，则 view的位置为 {@IndicatorDialog.mResultHeight} *rectage
+     *
+     * @param rectage
+     * @return
+     */
     public IndicatorBuilder ArrowRectage(float rectage) {
-        if (rectage > 1) {
-            new Exception("rectage can not >= 1");
+        if (rectage > 1 || rectage < 0) {
+            new Exception("rectage must be 0 <= rectage <= 1");
         }
         this.arrowercentage = rectage;
         return this;
     }
 
+    /**
+     * 箭头方向
+     *
+     * @param direction
+     * @return
+     */
     public IndicatorBuilder ArrowDirection(@ARROWDIRECTION int direction) {
         this.arrowdirection = direction;
         return this;
@@ -101,6 +156,7 @@ public class IndicatorBuilder {
 
     /**
      * 背景模糊效果，默认true
+     *
      * @param enable 默认true
      * @return
      */
@@ -129,8 +185,8 @@ public class IndicatorBuilder {
         if (width <= 0)
             throw new NullPointerException("width can not be 0");
 
-        if (arrowercentage <= 0)
-            throw new NullPointerException("arrowercentage can not be 0");
+        if (arrowercentage < 0)
+            throw new NullPointerException("arrowercentage can not < 0");
 
 
         if (mAdapter == null)

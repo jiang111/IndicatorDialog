@@ -33,4 +33,9 @@ public class Utils {
     public static int getStatusBarHeight(Activity context) {
         return new SystemBarConfig(context).getStatusBarHeight();
     }
+
+    public static int getNavigationBarHeight(Activity context) {
+        return new SystemBarConfig(context).getNavigationBarHeight();
+
+    }
 }

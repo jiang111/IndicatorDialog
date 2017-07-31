@@ -27,19 +27,26 @@ import static com.jiang.android.indicatordialog.IndicatorBuilder.TOP;
 public class IndicatorDialog {
 
     public static float ARROW_RECTAGE = 0.1f;
+    int gravity = Gravity.TOP | Gravity.LEFT;
+    /**
+     * 控件
+     */
     private Activity mContext;
     private Dialog mDialog;
     private IndicatorBuilder mBuilder;
     private RecyclerView recyclerView;
     private LinearLayout rootLayout;
-    int gravity = Gravity.TOP | Gravity.LEFT;
     private LinearLayout childLayout;
-    private int arrowWidth;
     private View mArrow;
     private CardView mCardView;
+    private View mShowView;
+
+    /**
+     * 变量
+     */
+    private int mArrowWidth;
     private int mWidth;
     private int mResultHeight;
-    private View mShowView;
 
     public static IndicatorDialog newInstance(Activity context, IndicatorBuilder builder) {
         IndicatorDialog dialog = new IndicatorDialog(context, builder);
@@ -50,7 +57,11 @@ public class IndicatorDialog {
     public IndicatorDialog(Activity context, IndicatorBuilder builder) {
         this.mContext = context;
         this.mBuilder = builder;
-        this.arrowWidth = (int) (mBuilder.width * ARROW_RECTAGE);
+        if (mBuilder.mArrowWidth <= 0) {
+            this.mArrowWidth = (int) (mBuilder.width * ARROW_RECTAGE);
+        } else {
+            this.mArrowWidth = mBuilder.mArrowWidth;
+        }
 
         initDialog();
     }
@@ -67,7 +78,7 @@ public class IndicatorDialog {
             this.mWidth = mBuilder.width;
         } else {
             rootLayout.setOrientation(LinearLayout.HORIZONTAL);
-            this.mWidth = mBuilder.width + arrowWidth;
+            this.mWidth = mBuilder.width + mArrowWidth;
         }
         ViewGroup.LayoutParams rootParam = new ViewGroup.LayoutParams(mWidth,
                 mBuilder.height <= 0 ? ViewGroup.LayoutParams.WRAP_CONTENT : mBuilder.height);
@@ -101,7 +112,7 @@ public class IndicatorDialog {
         CardView.LayoutParams layoutParams = (CardView.LayoutParams) recyclerView.getLayoutParams();
         int width = mBuilder.width;
         if (mBuilder.arrowdirection == RIGHT) {
-            width -= arrowWidth;
+            width -= mArrowWidth;
         }
         layoutParams.width = width;
         recyclerView.setLayoutParams(layoutParams);
@@ -124,7 +135,7 @@ public class IndicatorDialog {
 
     private void resizeHeight(int recyclerviewHeight) {
 
-        int arrowHeght = mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM ? arrowWidth : 0;
+        int arrowHeght = mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM ? mArrowWidth : 0;
         int calcuteResult = recyclerviewHeight + arrowHeght;
         int recyc_height = recyclerviewHeight;
         if (mBuilder.height <= 0 || calcuteResult < mBuilder.height) {
@@ -132,7 +143,7 @@ public class IndicatorDialog {
         } else {
             mResultHeight = mBuilder.height;
             if (mBuilder.arrowdirection == BOTTOM) {
-                recyc_height = mResultHeight - arrowWidth;
+                recyc_height = mResultHeight - mArrowWidth;
             }
         }
 
@@ -145,9 +156,9 @@ public class IndicatorDialog {
             int[] location = new int[2];
             mShowView.getLocationInWindow(location);
 
-            int contentHeight = Utils.getLocationInWindow(mContext)[1];
+            int windowHeight = Utils.getLocationInWindow(mContext)[1];
             if (mBuilder.arrowdirection == TOP) {
-                canUseHeight = contentHeight - location[1] - mShowView.getHeight();
+                canUseHeight = windowHeight - location[1] - mShowView.getHeight();
             } else if (mBuilder.arrowdirection == BOTTOM) {
                 canUseHeight = location[1] - Utils.getStatusBarHeight(mContext);
             } else {
@@ -157,6 +168,9 @@ public class IndicatorDialog {
 
         if (mResultHeight > canUseHeight) {
             mResultHeight = canUseHeight;
+            if (mBuilder.arrowdirection == BOTTOM) {
+                recyc_height = mResultHeight - mArrowWidth;
+            }
         }
         params.height = mResultHeight;
         rootLayout.setLayoutParams(params);
@@ -170,11 +184,11 @@ public class IndicatorDialog {
 
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mArrow.getLayoutParams();
         if (mBuilder.arrowdirection == TOP) {
-            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage) - arrowWidth / 2;
+            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage) - mArrowWidth / 2;
         } else if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
-            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage) - arrowWidth / 2;
+            layoutParams.leftMargin = (int) (mBuilder.width * mBuilder.arrowercentage) - mArrowWidth / 2;
         } else {
-            layoutParams.topMargin = (int) (mResultHeight * mBuilder.arrowercentage) - arrowWidth / 2;
+            layoutParams.topMargin = (int) (mResultHeight * mBuilder.arrowercentage) - mArrowWidth / 2;
             Window dialogWindow = mDialog.getWindow();
             dialogWindow.setBackgroundDrawableResource(android.R.color.transparent);
             WindowManager.LayoutParams lp = dialogWindow.getAttributes();
@@ -200,8 +214,8 @@ public class IndicatorDialog {
         mArrow = new View(mContext);
         rootLayout.addView(mArrow);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mArrow.getLayoutParams();
-        layoutParams.width = arrowWidth;
-        layoutParams.height = arrowWidth;
+        layoutParams.width = mArrowWidth;
+        layoutParams.height = mArrowWidth;
         mArrow.setLayoutParams(layoutParams);
     }
 
@@ -243,9 +257,9 @@ public class IndicatorDialog {
             }
         } else {
             if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
-                x = view.getWidth() - arrowWidth / 2;
+                x = view.getWidth() - mArrowWidth / 2;
             } else if (mBuilder.gravity == IndicatorBuilder.GRAVITY_RIGHT) {
-                x = view.getWidth() - arrowWidth / 2;
+                x = view.getWidth() - mArrowWidth / 2;
             }
 
         }
@@ -274,9 +288,9 @@ public class IndicatorDialog {
         x += xOffset;
         if (x < 0) x = 0;
         if (mBuilder.arrowdirection == IndicatorBuilder.BOTTOM) {
-            y = height - location[1];
+            y = height - location[1] + Utils.getNavigationBarHeight(mContext) - mArrowWidth / 2;
         } else if (mBuilder.arrowdirection == TOP) {
-            y = location[1] + view.getHeight() - arrowWidth / 2;
+            y = location[1] + view.getHeight() - mArrowWidth / 2;
         } else {
             y = location[1] + view.getHeight() / 2;
         }
