@@ -32,7 +32,7 @@ Step 2. Add the dependency [![](https://jitpack.io/v/jiang111/IndicatorDialog.sv
 
 ```
 dependencies {
-    compile 'com.github.jiang111:IndicatorDialog:v1.3.7'
+    compile 'com.github.jiang111:IndicatorDialog:v1.3.8'
 }
 ```
 
