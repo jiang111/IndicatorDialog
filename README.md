@@ -1,5 +1,5 @@
 # IndicatorDialog
-a dialog with arrow indicator in the location where you want [minSdkVersion 15] <br />
+a dialog with arrow indicator in the location where you want [minSdkVersion 9] <br />
 [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
 [![](https://jitpack.io/v/jiang111/IndicatorDialog.svg)](https://jitpack.io/#jiang111/IndicatorDialog)
@@ -32,7 +32,7 @@ Step 2. Add the dependency [![](https://jitpack.io/v/jiang111/IndicatorDialog.sv
 
 ```
 dependencies {
-    compile 'com.github.jiang111:IndicatorDialog:v1.3.8'
+    compile 'com.github.jiang111:IndicatorDialog:2.0.1'
 }
 ```
 
