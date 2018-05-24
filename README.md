@@ -50,7 +50,7 @@ IndicatorDialog dialog = new IndicatorBuilder(this)  //must be activity
                 .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog
                 .dimEnabled(true)                      // set bg blurry enable , default is true
                 .gravity(GRAVITY_LEFT)                // dialog' sgravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER)
-                //.arrowDrawable(BaseDrawable)        //custom arrow style if you needed
+                //.arrowDrawable(BaseDrawable)        //custom arrow style if you need
                 .radius(8)                            // the radius in dialog
                 .ArrowRectage(0.2f)                   // the arrow's offset Relative to the dialog's width  even though you set the ArrowDirection to IndicatorBuilder.LEFT or RIGHT
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))  //the LayoutManager of RecyclerView
@@ -60,7 +60,6 @@ dialog.show(v);                                        // determine the location
 // dialog.show(v,x,y);                                // x,y offset of the dialog 
 dialog.dismiss();                                     //dismiss the dialog
 dialog.getDialog();                                   // get the real dialog object
-//you can custom arrow style by new class extend BaseDrawable and use the arrowDrawable(baseDrawable) method to config 
 ```
 [see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
