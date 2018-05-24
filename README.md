@@ -43,8 +43,8 @@ dependencies {
 // create  IndicatorBuilder to init parameters
 
 IndicatorDialog dialog = new IndicatorBuilder(this)  //must be activity
-                .width(400) (px)                          // the dialog width in px
-                .height(100) (px)                         // the dialog max height in px or -1 (means auto fit)
+                .width(dp2px(400))                          // the dialog width in px
+                .height(dp2px(100))                         // the dialog max height in px or -1 (means auto fit)
                  .animator(R.style.dialog_exit) //add animator (optional)
                 .ArrowDirection(IndicatorBuilder.BOTTOM)      // the position of dialog's arrow indicator(TOP BOTTOM LEFT or RIGHT) 
                 .bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog
