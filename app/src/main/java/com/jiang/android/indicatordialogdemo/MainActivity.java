@@ -624,7 +624,7 @@ public class MainActivity extends AppCompatActivity {
                 }).create();
 
         dialog.setCanceledOnTouchOutside(true);
-        dialog.show(v);
+        dialog.show(v,-50,-50);
 
     }
 

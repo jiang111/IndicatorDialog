@@ -246,9 +246,11 @@ public class IndicatorDialog {
 
 
     public void show(View view) {
-        mShowView = view;
+        show(view, 0, 0);
+    }
+
+    public void show(View view, int xOffset, int yOffset) {
         int x = 0;
-        int y = 0;
         if (mBuilder.arrowdirection == TOP || mBuilder.arrowdirection == BOTTOM) {
             if (mBuilder.gravity == IndicatorBuilder.GRAVITY_LEFT) {
                 x = -1 * (int) (mBuilder.width * mBuilder.arrowercentage) + view.getWidth() / 2;
@@ -264,13 +266,12 @@ public class IndicatorDialog {
 
         }
 
-
-        show(view, x, y);
-
+        showReal(view, x + xOffset, yOffset);
     }
 
 
-    public void show(View view, int xOffset, int yOffset) {
+    private void showReal(View view, int xOffset, int yOffset) {
+        mShowView = view;
         int[] location = new int[2];
         view.getLocationInWindow(location);
         int height = Utils.getLocationInWindow(mContext)[1];
