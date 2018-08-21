@@ -38,30 +38,43 @@ dependencies {
 
 ### Usage:
 ```
-//we use RecyclerView.Adapter to fill the content of dialog
-
-// create  IndicatorBuilder to init parameters
-
+最终内部是通过RecyclerView来实现.
 IndicatorDialog dialog = new IndicatorBuilder(this)  //must be activity
-                .width(dp2px(400))                          // the dialog width in px
-                .height(dp2px(100))                         // the dialog max height in px or -1 (auto fit)
-                 .animator(R.style.dialog_exit) //add animator (optional)
+                .width(dp2px(400))                      
+                .height(-1)                        
+                .animator(R.style.dialog_exit) 
                 .ArrowDirection(IndicatorBuilder.BOTTOM)     
-		// the position of dialog's arrow indicator(TOP BOTTOM LEFT or RIGHT)  箭头方向
-		
-		.bgColor(Color.parseColor("#49484b"))  // the bg color of the dialog  背景颜色
-                .dimEnabled(true)                      // set bg blurry enable , default is true  背景模糊 默认true
-                .gravity(GRAVITY_LEFT)                // dialog' s  gravity (GRAVITY_LEFT or GRAVITY_RIGHT or GRAVITY_CENTER)
-                //.arrowDrawable(BaseDrawable)        //custom arrow style if you need
-                .radius(8)                            // the radius in dialog  四周圆角
-                .ArrowRectage(0.2f)                   // the arrow's offset Relative to the dialog's width  even though you set the ArrowDirection to IndicatorBuilder.LEFT or RIGHT 三角箭头的偏移量 0-1f
+		.bgColor(Color.parseColor("#49484b"))  
+                .dimEnabled(true)                     
+                .gravity(GRAVITY_LEFT)                
+                .radius(8)                            
+                .ArrowRectage(0.2f)                  
                 .layoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false))  //the LayoutManager of RecyclerView
-                .adapter(adapter).create();            //the adapter of RecyclerView
-dialog.setCanceledOnTouchOutside(true);                // outside cancelable
-dialog.show(v);                                        // determine the location of dialog
-// dialog.show(v,x,y);                                // x,y offset of the dialog 
-dialog.dismiss();                                     //dismiss the dialog
-dialog.getDialog();                                   // get the real dialog object
+                .adapter(adapter)
+		.create();           
+dialog.setCanceledOnTouchOutside(true);               
+dialog.show(v);                                                                     
+dialog.dismiss();                                    
+dialog.getDialog();                                 
+
+
+//方法解释
+
+width()     //宽,单位px,必填
+height()    //高,单位px,推荐传-1 可以自动适配
+ArrowDirection()   //箭头方向 TOP BOTTOM LEFT RIGHT
+bgColor()          //背景颜色
+dimEnabled()      //背景模糊,默认true
+gravity()         //对话框的权重 GRAVITY_LEFT  GRAVITY_RIGHT  GRAVITY_CENTER
+radius()          //圆角
+ArrowRectage()    //箭头距离左边或者右边的偏移量 取值 0-1, 左右依据gravity来判断是左边偏移还是右边
+
+//高级方法
+animator()  //dialog显示消失的动画
+arrowDrawable()   //自定义箭头样式,可以自定义成任何形状
+
+dialog.show(v,x,y);    //x为向左右偏移,y为上下偏移   
+
 ```
 [see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
