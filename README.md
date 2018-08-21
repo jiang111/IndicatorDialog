@@ -37,8 +37,11 @@ dependencies {
 ```
 
 ### Usage:
+最终内部是通过RecyclerView来实现,详细用法请参考 
+[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
+
 ```
-最终内部是通过RecyclerView来实现.
+
 IndicatorDialog dialog = new IndicatorBuilder(this)  //must be activity
                 .width(dp2px(400))                      
                 .height(-1)                        
@@ -76,7 +79,6 @@ arrowDrawable()   //自定义箭头样式,可以自定义成任何形状
 dialog.show(v,x,y);    //x为向左右偏移,y为上下偏移   
 
 ```
-[see the demo](https://github.com/jiang111/IndicatorDialog/blob/master/app/src/main/java/com/jiang/android/indicatordialogdemo/MainActivity.java) or [download apk](https://raw.githubusercontent.com/jiang111/IndicatorDialog/master/art/app.apk)
 
 
 ### Other
