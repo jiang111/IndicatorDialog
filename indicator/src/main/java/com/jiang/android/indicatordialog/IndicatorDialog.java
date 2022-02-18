@@ -124,7 +124,11 @@ public class IndicatorDialog {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onGlobalLayout() {
-                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    recyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
                 int recyclerviewHeight = recyclerView.getHeight();
                 resizeHeight(recyclerviewHeight);
             }
